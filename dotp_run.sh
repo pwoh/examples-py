@@ -46,4 +46,4 @@ python timer.py 5000 1 '{
          "args":["noop"]
       }
    ]
-}' 1 "testres"
+}' 1 "dotp_results-"

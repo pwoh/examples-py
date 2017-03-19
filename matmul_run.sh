@@ -44,4 +44,4 @@ python timer.py 5000 1 '{
          "args":["noop"]
       }
    ]
-}' 1 "testres-matmul"
+}' 1 "matmul_results-"
