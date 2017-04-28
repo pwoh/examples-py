@@ -2,7 +2,7 @@
 #python timer.py [vector/matrix size] [size increment] [json] [times to run] [output filename]
 python timer.py 5000 1 '{
    "columns":[
-      "Vector size",
+      "Matrix size",
       "Tensorflow (built-in)",
       "Tensorflow (replicate)",
       "Tensorflow (no-op)",
@@ -44,4 +44,4 @@ python timer.py 5000 1 '{
          "args":["noop"]
       }
    ]
-}' 1 "matmul_results-"
+}' 10 "matmul_results-"

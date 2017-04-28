@@ -15,8 +15,12 @@ def getAvgMs(start, repeat):
 def timeAvg(repeat, callArgs):
     start = time.time()
     for _ in range(0, repeat):
-        check_call(callArgs, stdout=DEVNULL, stderr=STDOUT)
-    return getAvgMs(start, repeat)
+        try:
+            check_call(callArgs, stdout=DEVNULL, stderr=STDOUT)
+            return getAvgMs(start, repeat)
+        except subprocess.CalledProcessError as err:
+            print "Error running " + str(callArgs) ", error code " + str(err.returncode)
+            return -1
 
 # Command line arguments
 # Usage: python timer.py [vector or matrix size]
