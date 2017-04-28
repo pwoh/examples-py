@@ -19,7 +19,7 @@ def timeAvg(repeat, callArgs):
             check_call(callArgs, stdout=DEVNULL, stderr=STDOUT)
             return getAvgMs(start, repeat)
         except subprocess.CalledProcessError as err:
-            print "Error running " + str(callArgs) ", error code " + str(err.returncode)
+            print "Error running " + str(callArgs) + ", error code " + str(err.returncode)
             return -1
 
 # Command line arguments
