@@ -3,7 +3,7 @@ import sys
 from tensorflow.python.client import timeline
 
 dotp_unvectorised = lambda xs, ys: tf.foldl(lambda a, x: a + x, tf.map_fn(lambda x: x[0] * x[1], (xs,ys), dtype=tf.float32))
-dotp_vectorised = lambda xs, ys: tf.reduce_sum(tf.multiply(xs,ys))
+dotp_vectorised = lambda xs, ys: tf.reduce_sum(tf.mul(xs,ys))
 dotp_matmul = lambda xs, ys: tf.matmul(xs,ys)
 
 dim = int(sys.argv[1])

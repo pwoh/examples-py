@@ -24,7 +24,7 @@ for _ in range(0, repeat):
         bc = dim
         b_rep = tf.reshape(tf.tile(tf.transpose(b), [ar,1]), [ar,bc,ac_br]) 
         a_rep = tf.reshape(tf.tile(a, [1,bc]), [ar,bc,ac_br])
-        c = tf.reduce_sum(tf.multiply(a_rep, b_rep), 2)
+        c = tf.reduce_sum(tf.mul(a_rep, b_rep), 2)
     else:
         c = tf.no_op()
 
