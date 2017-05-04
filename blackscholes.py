@@ -58,7 +58,7 @@ for _ in range(0, repeat):
         run_metadata = tf.RunMetadata()
 
         # Add print operation
-        blackscholesmap = tf.Print(blackscholesmap, [blackscholesmap], message="Result: ")
+        # blackscholesmap = tf.Print(blackscholesmap, [blackscholesmap], message="Result: ")
 
         # init_op = tf.global_variables_initializer()
         # sess.run(init_op)
