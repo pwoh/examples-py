@@ -16,7 +16,7 @@ def timeAvg(repeat, callArgs):
     start = time.time()
     for _ in range(0, repeat):
         try:
-            check_call(callArgs, stderr=STDOUT)
+            check_call(callArgs, stdout=DEVNULL, stderr=STDOUT)
         except subprocess.CalledProcessError as err:
             print "Error running " + str(callArgs) + ", error: " + str(err)
             return -1
@@ -57,6 +57,6 @@ with open(filename + strftime("%Y-%m-%d-%H:%M:%S", gmtime()) + '.csv', 'wb') as 
             curRes = " "
             maxDim = stackItem['maxDim']
             if (d <= maxDim):
-                curRes = timeAvg(repeat, ['stack', 'exec', stackItem['filename'], str(d), '1'] + stackItem['args'])
+                curRes = timeAvg(repeat, ['stack', 'exec', '--stack-yaml', stackItem['yaml'], stackItem['filename'], str(d), '1'] + stackItem['args'])
             resultrow.append(curRes)
         writer.writerow(resultrow)

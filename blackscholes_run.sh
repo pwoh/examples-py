@@ -12,12 +12,12 @@ python timer.py 10000 1 '{
       {
          "filename":"blackscholes.py",
          "maxDim":10000,
-         "args":["map", "timeline_on"]
+         "args":["map"]
       },
       {
          "filename":"blackscholes.py",
          "maxDim":10000,
-         "args":["noop", "timeline_on"]
+         "args":["noop"]
       }
    ],
    "stack":[

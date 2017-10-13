@@ -1,6 +1,6 @@
 #!/bin/sh
 #python timer.py [vector/matrix size] [size increment] [json] [times to run] [output filename]
-python timer.py 5000 1 '{
+python timer.py 5000 50 '{
    "columns":[
       "Matrix size",
       "Tensorflow (built-in)",

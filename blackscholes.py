@@ -43,7 +43,7 @@ if len(sys.argv) == 5:
 for _ in range(0, repeat):
     # Randomly generate [dim] number of options, and map blackscholes over all of them
     prices = tf.random_uniform([dim], 5.0, 30.0, tf.float32)
-    strikes = tf.random_uniform([dim], 1.0, 100.0, tf.float32)#todo - ints?
+    strikes = tf.random_uniform([dim], 1.0, 100.0, tf.float32)
     years = tf.random_uniform([dim], 0.25, 10, tf.float32) 
 
     if whichbs == 'map':
