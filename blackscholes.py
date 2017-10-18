@@ -64,7 +64,7 @@ for _ in range(0, repeat):
         # sess.run(init_op)
 
         sess.run(blackscholesmap, options=run_options, run_metadata=run_metadata)
-
+        
         if timeline_on:
             #Create the Timeline object, and write it to a json
             tl = timeline.Timeline(run_metadata.step_stats)
