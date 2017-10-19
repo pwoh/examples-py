@@ -20,8 +20,8 @@ if len(sys.argv) == 5:
 for _ in range(0, repeat):
     if whichdotp == 'matmul':
         a = tf.random_uniform([dim,1], tf.float32.min, tf.float32.max, tf.float32)
-        b = tf.random_uniform([dim,1], tf.float32.min, tf.float32.max, tf.float32)
-        c = dotp_matmul(a,tf.transpose(b))
+        b = tf.random_uniform([1,dim], tf.float32.min, tf.float32.max, tf.float32)
+        c = dotp_matmul(a,b)
     else:
         a = tf.random_uniform([dim], tf.float32.min, tf.float32.max, tf.float32)
         b = tf.random_uniform([dim], tf.float32.min, tf.float32.max, tf.float32)
@@ -36,7 +36,9 @@ for _ in range(0, repeat):
     with tf.Session() as sess:
         run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
         run_metadata = tf.RunMetadata()
-        sess.run([a,b,c], options=run_options, run_metadata=run_metadata)
+        
+        d = tf.Print(c, [c], message="Result: ")
+        sess.run(d, options=run_options, run_metadata=run_metadata)
 
         if timeline_on:
             #Create the Timeline object, and write it to a json
