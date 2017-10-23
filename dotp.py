@@ -19,17 +19,18 @@ if len(sys.argv) == 5:
 
 for _ in range(0, repeat):
     if whichdotp == 'matmul':
-        a = tf.random_uniform([dim,1], tf.float32.min, tf.float32.max, tf.float32)
-        b = tf.random_uniform([1,dim], tf.float32.min, tf.float32.max, tf.float32)
-        c = dotp_matmul(a,b)
+        a = tf.fill([dim,1], 1.0)#tf.random_uniform([dim,1], -1000000, 1000000, tf.float32)
+        b = tf.fill([1,dim], 1.0)#tf.random_uniform([1,dim], -1000000, 1000000, tf.float32)
+        c = dotp_matmul(b,a)
     else:
-        a = tf.random_uniform([dim], tf.float32.min, tf.float32.max, tf.float32)
-        b = tf.random_uniform([dim], tf.float32.min, tf.float32.max, tf.float32)
+        a = tf.fill([dim], 1.0)#tf.random_uniform([dim], -1000000, 1000000, tf.float32)
+        b = tf.fill([dim], 1.0)#tf.random_uniform([dim], -1000000, 1000000, tf.float32)
         if whichdotp == 'unvectorised':
             c = dotp_unvectorised(a,b)
         elif whichdotp == 'vectorised':
             c = dotp_vectorised(a,b)
         else:
+#            c = [a,b]
             c = tf.no_op()
 
     # Evaluate the tensor `c`.
@@ -37,8 +38,9 @@ for _ in range(0, repeat):
         run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
         run_metadata = tf.RunMetadata()
         
-        d = tf.Print(c, [c], message="Result: ")
-        sess.run(d, options=run_options, run_metadata=run_metadata)
+        if whichdotp != 'noop':
+            c = tf.Print(c, [c], message="Result: ")
+        sess.run(c, options=run_options, run_metadata=run_metadata)
 
         if timeline_on:
             #Create the Timeline object, and write it to a json
